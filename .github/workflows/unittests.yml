@@ -1,10 +1,10 @@
-name: Run Python Tests
+name: Run Unit Tests
 
 on:
   push:
-    branches: [ task-1 ]
+    branches: [ main, task-1 ]
   pull_request:
-    branches: [ task-1 ]
+    branches: [ main ]
 
 jobs:
   test:
@@ -21,11 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv .venv
-          source .venv/bin/activate
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          echo "✅ No tests yet – coming soon!"
- 
+          pytest
